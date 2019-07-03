@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="ISO-8859-1">
+<title>DashBoard Test Security</title>
+</head>
+<body>
+	<div>
+		<h1>DashBoard</h1>
+	</div>
+	<div>
+		<h3>List Pages</h3>
+	</div>
+	<div>
+		<ul>
+			<li>
+				<a href="/logout">Logout</a>
+			</li>
+			<li sec:authorize="hasAuthority('/admin/admin-alone')">
+				<a href="/admin/admin-alone">Just Admin</a>
+			</li>
+			<li>
+				<a href="/admin/admin-user">Admin and User</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
