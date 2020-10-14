@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>DashBoard Test Security</title>
@@ -13,14 +14,9 @@
 	</div>
 	<div>
 		<ul>
-			<li>
-				<a href="/logout">Logout</a>
-			</li>
-			<li sec:authorize="hasAuthority('/admin/admin-alone')">
-				<a href="/admin/admin-alone">Just Admin</a>
-			</li>
-			<li>
-				<a href="/admin/admin-user">Admin and User</a>
+			<li><a href="/logout">Logout</a></li>
+			<li th:each="paginas :${menu}">
+				<a th:href="${paginas.url}" th:text="${paginas.label}"></a>
 			</li>
 		</ul>
 	</div>

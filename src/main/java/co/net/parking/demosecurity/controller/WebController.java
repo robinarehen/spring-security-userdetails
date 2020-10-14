@@ -2,7 +2,9 @@ package co.net.parking.demosecurity.controller;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import co.net.parking.demosecurity.model.ModuloModel;
+import co.net.parking.demosecurity.model.PaginaModuloModel;
 import co.net.parking.demosecurity.model.UsuarioModel;
 import co.net.parking.demosecurity.service.UsuarioModelService;
 
@@ -43,30 +45,29 @@ public class WebController {
 	}
 
 	@RequestMapping("/dashboard")
-	public String dashboard(Principal principal) {
+	public String dashboard(Principal principal, Model model) {
 
 		UsuarioModel usuarioModel = this.modelService.getFindByUserName(principal.getName());
-
-		List<ModuloModel> moduloModels = new ArrayList<>();
-
-		usuarioModel.getRolUsuarioModels().stream().forEach((rolUsuario) -> {
-
-			rolUsuario.getRolModel().getPaginaRolModels().stream().forEach((paginaRol) -> {
-
-				ModuloModel moduloModel = paginaRol.getPaginaModuloModel().getModuloModel();
-
-				if (!moduloModels.contains(moduloModel)) {
-
-					String modulo = String.format("id:%s - labe: %s", moduloModel.getIdModulo(),
-							moduloModel.getLabel());
-
-					System.out.println(modulo);
-
-					moduloModels.add(moduloModel);
+		
+		List<PaginaModuloModel> menu = new ArrayList<>();
+		Map<String, List<PaginaModuloModel>> mapTest = new HashMap<>();
+		usuarioModel.getRolUsuarioModels().forEach( rol -> {
+			rol.getRolModel().getPaginaRolModels().forEach( paginas -> {
+				String nombre = paginas.getPaginaModuloModel().getModuloModel().getNombre();
+				if(!menu.contains(paginas.getPaginaModuloModel())) {
+					menu.add(paginas.getPaginaModuloModel());
 				}
-
+				mapTest.put(nombre, menu);
 			});
 		});
+		mapTest.entrySet().forEach( value ->{
+			System.out.println(value.getKey());
+			value.getValue().forEach( data -> {
+				System.out.println(data.getLabel());
+			});
+		});
+		
+		model.addAttribute("menu", menu);
 
 		return "dashboard";
 	}
