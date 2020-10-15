@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-<head>
+<head th:replace="fragments/layouts :: head(titlePage='Error')">
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	<div th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
-		<h1>Error</h1>
-		<p th:if="${httpStatus.reasonPhrase} == 'Not Found'">The page no exist</p>
-		<p th:text="${errorMessage}"></p>
-	</div>
-	<div>
-		<a href="/dashboard">Go Back</a>
-	</div>
+
+	<header th:replace="fragments/layouts :: header-users(titlePage='Dashboard')"></header>
+
+	<main class="container">
+		<div class="row">
+			<div class="col s12 m10 offset-m2">
+				<div class="card">
+					<div class="card-title center">
+						<h4>Error Page</h4>
+					</div>
+					<div class="card-content">
+						<div th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+							<h5 th:if="${httpStatus.reasonPhrase} == 'Not Found'">The page does not exist</h5>
+							<h5 th:text="${errorMessage}"></h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer th:replace="fragments/layouts :: footer"></footer>
 </body>
 </html>

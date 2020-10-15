@@ -14,6 +14,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.net.parking.demosecurity.model.PaginaModuloModel;
@@ -21,11 +22,11 @@ import co.net.parking.demosecurity.model.UsuarioModel;
 import co.net.parking.demosecurity.service.UsuarioModelService;
 
 @Controller
-public class WebController {
+public class HomeController {
 
 	private UsuarioModelService modelService;
 
-	public WebController(UsuarioModelService modelService) {
+	public HomeController(UsuarioModelService modelService) {
 		super();
 		this.modelService = modelService;
 	}
@@ -81,14 +82,18 @@ public class WebController {
 	@RequestMapping("/admin/admin-alone")
 	@PreAuthorize("hasAuthority('/admin/admin-alone')")
 	public String adminAlone() {
-
 		return "admin-alone";
 	}
 
 	@RequestMapping("/admin/admin-user")
 	@PreAuthorize("hasAuthority('/admin/admin-user')")
 	public String adminAndUser() {
-
 		return "admin-user";
+	}
+
+	@ModelAttribute
+	public Model setAttribute(Model model) {
+		model.addAttribute("titlePage", "Dashboard");
+		return model;
 	}
 }

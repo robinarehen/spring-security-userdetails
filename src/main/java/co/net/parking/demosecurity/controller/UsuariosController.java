@@ -3,7 +3,9 @@ package co.net.parking.demosecurity.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -27,4 +29,10 @@ public class UsuariosController {
 		return "usuarios/crear-usuarios";
 	}
 
+	@ModelAttribute
+	public Model setAttribute(Model model) {
+		model.addAttribute("titlePage", "Usuarios");
+		model.addAttribute("activeModule", "Servicio Usuarios");
+		return model;
+	}
 }
