@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -42,11 +43,15 @@ public class WebController {
 
 		logoutHandler.logout(request, null, null);
 
-		return "login";
+		return "redirect:/login";
 	}
 
 	@RequestMapping("/dashboard")
-	public String dashboard(Principal principal, Model model) {
+	public String dashboard(Principal principal, Model model, HttpSession session) {
+
+		if (session != null && session.getAttribute("menuPaginas") != null) {
+			return "dashboard";
+		}
 
 		UsuarioModel usuarioModel = this.modelService.getFindByUserName(principal.getName());
 
@@ -61,13 +66,14 @@ public class WebController {
 				paginasModulo.add(paginas.getPaginaModuloModel());
 			});
 		});
-		
+
 		menuPaginas.entrySet().forEach(data -> {
-			data.setValue(paginasModulo.stream().filter(pagina -> pagina.getModuloModel().getNombre().equals(data.getKey()))
-					.collect(Collectors.toList()));
+			data.setValue(
+					paginasModulo.stream().filter(pagina -> pagina.getModuloModel().getNombre().equals(data.getKey()))
+							.collect(Collectors.toList()));
 		});
 
-		model.addAttribute("menuPaginas", menuPaginas);
+		session.setAttribute("menuPaginas", menuPaginas);
 
 		return "dashboard";
 	}

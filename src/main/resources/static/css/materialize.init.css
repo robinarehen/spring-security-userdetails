@@ -12,8 +12,8 @@
 	background-color: #2196F3;
 }
 
-.sidenav.sidenav-fixed {
-	top: 64px;
+.sidenav {
+	width: 250px
 }
 
 /*New global Class*/
