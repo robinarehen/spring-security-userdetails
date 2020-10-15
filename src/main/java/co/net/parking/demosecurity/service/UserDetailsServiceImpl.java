@@ -27,7 +27,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		
 		UsuarioModel usuarioModel = this.usuarioModelRepository.findByUsuario(username);
 		
-		Optional.ofNullable(usuarioModel).orElseThrow(() -> new UsernameNotFoundException("User no Exists"));
+		Optional.ofNullable(usuarioModel).orElseThrow(() -> new UsernameNotFoundException("User does not exist"));
 
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 

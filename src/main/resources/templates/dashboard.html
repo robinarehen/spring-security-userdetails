@@ -1,31 +1,53 @@
 <!DOCTYPE html>
-<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-	xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>DashBoard Test Security</title>
+	<meta charset="ISO-8859-1">
+	<title>DashBoard Test Security</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link th:href="@{/css/materialize.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/materialize.init.css}" rel="stylesheet" />
 </head>
 <body>
-	<div>
-		<h1>DashBoard</h1>
-	</div>
-	<div>
-		<h3>List Pages</h3>
-	</div>
-	<div>
-		<ul>
-			<li th:each="menu :${menuPaginas.entrySet()}">
-				<div>
-					<label th:text="${menu.getKey()}"></label>
-					<ul>
-						<li th:each="paginas :${menu.getValue()}">
-							<a th:href="${paginas.url}" th:text="${paginas.label}"></a>
-						</li>
-					</ul>
+	<header>
+		<div class="navbar-fixed">
+			<nav class="blue darken-4">
+				<div class="nav-wrapper container">
+					<a href="/dashboard" class="brand-logo center">DashBoard</a>
 				</div>
-			</li>
-			<li><a href="/logout">Logout</a></li>
-		</ul>
-	</div>
+			</nav>
+		</div>	
+	</header>	
+	<main class="container">
+		<div class="row">
+			<div class="col s12">
+				<ul class="sidenav sidenav-fixed">
+					<li>
+						<ul class="collapsible collapsible-accordion">
+							<li th:each="menu :${menuPaginas.entrySet()}">
+								<a class="collapsible-header">
+									<i class="material-icons">folder</i>
+									<span th:text="${menu.getKey()}"></span>
+								</a>
+								<div class="collapsible-body">
+									<ul>
+										<li th:each="paginas :${menu.getValue()}">
+											<a th:href="${paginas.url}" th:text="${paginas.label}"></a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>					
+					</li>
+					<li><a href="/logout"><i class="material-icons">lock</i>Logout</a></li>
+				</ul>	
+			</div>
+		</div>
+	</main>
+	
+
+	<footer th:fragment="footer">
+		<script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/materialize.init.js}"></script>
+	</footer>
 </body>
 </html>

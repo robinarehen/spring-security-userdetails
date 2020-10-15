@@ -61,7 +61,7 @@ public class WebController {
 				paginasModulo.add(paginas.getPaginaModuloModel());
 			});
 		});
-
+		
 		menuPaginas.entrySet().forEach(data -> {
 			data.setValue(paginasModulo.stream().filter(pagina -> pagina.getModuloModel().getNombre().equals(data.getKey()))
 					.collect(Collectors.toList()));

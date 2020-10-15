@@ -1,0 +1,32 @@
+/*Alter class of materialize*/
+.sidenav li>a>i.material-icons {
+	margin: 0 15px 0 0;
+}
+
+.card .card-title {
+	border-bottom: 1px solid rgba(160, 160, 160, 0.2);
+	padding: 10px 15px
+}
+
+.pagination li.active {
+	background-color: #2196F3;
+}
+
+.sidenav.sidenav-fixed {
+	top: 64px;
+}
+
+/*New global Class*/
+.text-right {
+	text-align: right;
+}
+
+.btn-back {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+
+.display-none {
+	display: none;
+}

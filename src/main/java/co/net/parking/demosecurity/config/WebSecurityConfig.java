@@ -17,12 +17,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private UserDetailsService userDetailsService;
-
-	/*@Autowired
-	public void ConfigureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
-	}*/
-		
+	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
@@ -31,7 +26,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		String[] urlsAll = new String[] { "/", "/index", "/login" };
+		String[] urlsAll = new String[] { "/", "/index", "/login", "/css/**", "/js/**" };
 		
 		http.authorizeRequests()
 			.antMatchers(urlsAll).permitAll()

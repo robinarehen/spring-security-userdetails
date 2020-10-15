@@ -1,19 +1,55 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Login Test Security</title>
+	<meta charset="ISO-8859-1">
+	<title>Login Test Security</title>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link th:href="@{/css/materialize.min.css}" rel="stylesheet" />
+	<link th:href="@{/css/materialize.init.css}" rel="stylesheet" />
 </head>
 <body>
-	<div>
-		<h1>Login</h1>
-	</div>
-	<div>
-		<form th:action="@{/login}" method="post">
-			<input type="text" name="username" value=""><br>
-			<input type="password" name="password" value=""><br>
-			<input type="submit" name="button" value="Start">
-		</form>
-	</div>
+	<header>
+		<div class="navbar-fixed">
+			<nav class="blue darken-4">
+				<div class="nav-wrapper container">
+					<a href="/dashboard" class="brand-logo center">Security</a>
+				</div>
+			</nav>
+		</div>	
+	</header>
+
+	<main class="container">
+		<div class="col s12 m9 offset-m2">
+			<div class="card">
+				<div class="card-title center">
+					<h4>Login</h4>
+				</div>
+				<div class="card-content">
+					<div class="row">
+						<form class="col s12 offset-m2" th:action="@{/login}" method="post">
+							<div class="row">
+								<div class="input-field col s12 m9">
+									<input type="text" id="username" name="username" value="">
+									<label for="username">User Name o Email</label>
+								</div>
+								<div class="input-field col s12 m9">
+									<input type="password" id="password" name="password" value=""><br>
+									<label for="password">Password</label>
+								</div>
+								<div class="input-field col s12 m9">
+									<input type="submit" name="button" class="btn" value="Start">
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<footer th:fragment="footer">
+		<script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
+		<script type="text/javascript" th:src="@{/js/materialize.init.js}"></script>
+	</footer>
 </body>
 </html>
