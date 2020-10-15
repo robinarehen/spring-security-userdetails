@@ -2,6 +2,7 @@ package co.net.parking.demosecurity.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,6 +26,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		UsuarioModel usuarioModel = this.usuarioModelRepository.findByUsuario(username);
+		
+		Optional.ofNullable(usuarioModel).orElseThrow(() -> new UsernameNotFoundException("User no Exists"));
 
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 

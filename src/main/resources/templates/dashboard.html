@@ -14,10 +14,17 @@
 	</div>
 	<div>
 		<ul>
-			<li><a href="/logout">Logout</a></li>
-			<li th:each="paginas :${menu}">
-				<a th:href="${paginas.url}" th:text="${paginas.label}"></a>
+			<li th:each="menu :${menuPaginas.entrySet()}">
+				<div>
+					<label th:text="${menu.getKey()}"></label>
+					<ul>
+						<li th:each="paginas :${menu.getValue()}">
+							<a th:href="${paginas.url}" th:text="${paginas.label}"></a>
+						</li>
+					</ul>
+				</div>
 			</li>
+			<li><a href="/logout">Logout</a></li>
 		</ul>
 	</div>
 </body>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
+		<h1>Error</h1>
+		<p th:if="${httpStatus.reasonPhrase} == 'Not Found'">The page no exist</p>
+		<p th:text="${errorMessage}"></p>
+	</div>
+	<div>
+		<a href="/dashboard">Go Back</a>
+	</div>
+</body>
+</html>

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -48,26 +49,25 @@ public class WebController {
 	public String dashboard(Principal principal, Model model) {
 
 		UsuarioModel usuarioModel = this.modelService.getFindByUserName(principal.getName());
-		
-		List<PaginaModuloModel> menu = new ArrayList<>();
-		Map<String, List<PaginaModuloModel>> mapTest = new HashMap<>();
-		usuarioModel.getRolUsuarioModels().forEach( rol -> {
-			rol.getRolModel().getPaginaRolModels().forEach( paginas -> {
-				String nombre = paginas.getPaginaModuloModel().getModuloModel().getNombre();
-				if(!menu.contains(paginas.getPaginaModuloModel())) {
-					menu.add(paginas.getPaginaModuloModel());
-				}
-				mapTest.put(nombre, menu);
+
+		List<PaginaModuloModel> paginasModulo = new ArrayList<>();
+
+		Map<String, List<PaginaModuloModel>> menuPaginas = new HashMap<>();
+
+		usuarioModel.getRolUsuarioModels().forEach(rol -> {
+			rol.getRolModel().getPaginaRolModels().forEach(paginas -> {
+				String key = paginas.getPaginaModuloModel().getModuloModel().getNombre();
+				menuPaginas.put(key, null);
+				paginasModulo.add(paginas.getPaginaModuloModel());
 			});
 		});
-		mapTest.entrySet().forEach( value ->{
-			System.out.println(value.getKey());
-			value.getValue().forEach( data -> {
-				System.out.println(data.getLabel());
-			});
+
+		menuPaginas.entrySet().forEach(data -> {
+			data.setValue(paginasModulo.stream().filter(pagina -> pagina.getModuloModel().getNombre().equals(data.getKey()))
+					.collect(Collectors.toList()));
 		});
-		
-		model.addAttribute("menu", menu);
+
+		model.addAttribute("menuPaginas", menuPaginas);
 
 		return "dashboard";
 	}
