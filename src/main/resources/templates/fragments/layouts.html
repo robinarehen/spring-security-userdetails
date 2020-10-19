@@ -24,7 +24,7 @@
 		<div id="menu-web" class="navbar-fixed">
 			<nav class="blue darken-4">
 				<div class="nav-wrapper container">
-					<a href="/dashboard" class="brand-logo center" th:text="${titlePage}">DashBoard</a>
+					<a href="/dashboard" class="brand-logo center">DashBoard</a>
 					<a href="#" data-target="slide-out" class="sidenav-trigger right">
 						<i class="material-icons">menu</i>
 					</a>
@@ -59,7 +59,10 @@
 								<ul>
 									<li th:each="paginas :${menu.getValue()}"
 										th:class="${#strings.equals(activeLink, paginas.label)} ? 'active' : ''">
-										<a th:href="${paginas.url}" th:text="${paginas.label}"></a>
+										<a th:href="${paginas.url}">
+											<i class="material-icons" th:text="${paginas.icono}">list</i>
+											<span th:text="${paginas.label}"></span>
+										</a>
 									</li>
 								</ul>
 							</div>
@@ -75,6 +78,7 @@
 	<footer th:fragment="footer">
 		<script type="text/javascript" th:src="@{/js/materialize.min.js}"></script>
 		<script type="text/javascript" th:src="@{/js/materialize.init.js}"></script>
+		<script type="text/javascript" th:src="@{/js/xhttpAjax.js}"></script>
 		<script th:if="${paramerJs} != null" type="text/javascript" th:src="${paramerJs}"></script>
 	</footer>
 </body>

@@ -4,14 +4,16 @@ function ajax(method, url, data) {
 		if (this.readyState == 4 && this.status == 200) {
 			ajaxResponse(this.responseText);
 		} else {
-			ajaxError(this.status, this.responseText);
+			if (this.readyState == 4 && this.status >= 400) {				
+				ajaxError(this.status, this);
+			}
 		}
 	};
 	xhttp.open(method, url, true);
 	xhttp.send();
 }
 
-function ajaxResponse() {
+function ajaxResponse(responseData) {
 
 }
 
