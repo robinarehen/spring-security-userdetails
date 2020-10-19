@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.net.parking.dad</groupId>
-	<artifactId>demo-security-002</artifactId>
+	<artifactId>spring-security-userdetails</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>demo-security-002</name>
-	<description>Parking Digital Transformation</description>
+	<name>spring-security-userdetails</name>
+	<description>Spring Security Userdetails</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -38,11 +38,11 @@
 		</dependency>
 
         <!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
-        <dependency>
+        <!-- <dependency>
             <groupId>org.thymeleaf.extras</groupId>
             <artifactId>thymeleaf-extras-springsecurity4</artifactId>
             <version>3.0.2.RELEASE</version>
-        </dependency>
+        </dependency> -->
         
 		<dependency>
 			<groupId>com.h2database</groupId>

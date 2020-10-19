@@ -28,10 +28,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		String[] urlsAll = new String[] { "/", "/index", "/login", "/css/**", "/js/**" };
 
-		http.authorizeRequests()
-			.antMatchers(urlsAll).permitAll()
-			.anyRequest().authenticated()
-			.and()
+		http.authorizeRequests().antMatchers(urlsAll).permitAll().anyRequest().authenticated().and()
 			.formLogin().loginPage("/login").defaultSuccessUrl("/dashboard", true).permitAll();
 	}
 

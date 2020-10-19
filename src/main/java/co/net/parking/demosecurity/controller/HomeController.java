@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,33 +62,22 @@ public class HomeController {
 
 		usuarioModel.getRolUsuarioModels().forEach(rol -> {
 			rol.getRolModel().getPaginaRolModels().forEach(paginas -> {
-				String key = paginas.getPaginaModuloModel().getModuloModel().getNombre();
+				String key = paginas.getPaginaModuloModel().getModuloModel().getLabel();
 				menuPaginas.put(key, null);
 				paginasModulo.add(paginas.getPaginaModuloModel());
 			});
 		});
 
 		menuPaginas.entrySet().forEach(data -> {
-			data.setValue(
-					paginasModulo.stream().filter(pagina -> pagina.getModuloModel().getNombre().equals(data.getKey()))
-							.collect(Collectors.toList()));
+			Predicate<PaginaModuloModel> predicate = (pagina) -> {
+				return pagina.getModuloModel().getLabel().equals(data.getKey());
+			};
+			data.setValue(paginasModulo.stream().filter(predicate).collect(Collectors.toList()));
 		});
 
 		session.setAttribute("menuPaginas", menuPaginas);
 
 		return "dashboard";
-	}
-
-	@RequestMapping("/admin/admin-alone")
-	@PreAuthorize("hasAuthority('/admin/admin-alone')")
-	public String adminAlone() {
-		return "admin-alone";
-	}
-
-	@RequestMapping("/admin/admin-user")
-	@PreAuthorize("hasAuthority('/admin/admin-user')")
-	public String adminAndUser() {
-		return "admin-user";
 	}
 
 	@ModelAttribute

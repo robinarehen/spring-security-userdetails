@@ -32,7 +32,7 @@ public class UsuariosController {
 	@ModelAttribute
 	public Model setAttribute(Model model) {
 		model.addAttribute("titlePage", "Usuarios");
-		model.addAttribute("activeModule", "Servicio Usuarios");
+		model.addAttribute("activeModule", "Usuarios");
 		return model;
 	}
 }

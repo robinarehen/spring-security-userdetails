@@ -1,9 +1,8 @@
-
 window.onload = function() {
-	init();
+	initMaterialize();
 }
 
-function init() {
+function initMaterialize() {
 	
 	var elems = document.querySelectorAll('.sidenav');
 	M.Sidenav.init(elems);

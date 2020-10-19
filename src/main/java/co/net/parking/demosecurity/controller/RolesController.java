@@ -32,7 +32,7 @@ public class RolesController {
 	@ModelAttribute
 	public Model setAttribute(Model model) {
 		model.addAttribute("titlePage", "Roles");
-		model.addAttribute("activeModule", "Servicio Roles");
+		model.addAttribute("activeModule", "Roles");
 		return model;
 	}
 }

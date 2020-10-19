@@ -22,11 +22,11 @@ public class ModulosController {
 	public ResponseEntity<String> getRoles() {
 		return ResponseEntity.ok("modulos");
 	}
-	
+
 	@ModelAttribute
 	public Model setAttribute(Model model) {
-		model.addAttribute("titlePage", "Areas");
-		model.addAttribute("activeModule", "Servicio Areas");
+		model.addAttribute("titlePage", "Modulos");
+		model.addAttribute("activeModule", "Modulos");
 		return model;
 	}
 }
