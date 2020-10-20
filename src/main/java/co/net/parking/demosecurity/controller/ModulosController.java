@@ -29,8 +29,8 @@ public class ModulosController {
 
 	@GetMapping
 	public String getAdminModulos(Model model) {
-		
-		model.addAttribute(ConstantsUtil.MODULO_OBJ_LISTA, this.service.getAll());
+
+		model.addAttribute(ConstantsUtil.MODULO_OBJ_LISTAR, this.service.getAll());
 
 		return ConstantsUtil.MODULO_HOME;
 	}
@@ -46,14 +46,15 @@ public class ModulosController {
 	public String getCrearModulo(Model model) {
 
 		model.addAttribute(ConstantsUtil.MODULO_OBJ_CREAR, new ModuloModel());
-		model.addAttribute(ConstantsUtil.TITLE_PAGE, "Crear Modulos");
-		
+		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.MODULO_TIT_CREAR);
+
 		return ConstantsUtil.MODULO_CREAR;
 	}
 
 	@PostMapping("/crear")
 	@PreAuthorize("hasAuthority('/modulos/crear')")
-	public String postCrearModulo(Model model, @ModelAttribute(ConstantsUtil.MODULO_OBJ_CREAR) ModuloModel moduloModel) {
+	public String postCrearModulo(Model model,
+			@ModelAttribute(ConstantsUtil.MODULO_OBJ_CREAR) ModuloModel moduloModel) {
 
 		ModuloModel moduloCreado = this.service.create(moduloModel);
 

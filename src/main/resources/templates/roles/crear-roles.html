@@ -1,15 +1,20 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
+<html xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments/layouts :: head">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<h1>Create Roles</h1>	
-	</div>
-	<div>
-		<a href="/dashboard">Go Back</a>
-	</div>
+	<header th:replace="fragments/layouts :: header-users(activeLink='Crear Roles')"></header>
+
+	<main class="container">
+		<div class="row">
+			<div class="col s12 m12 offset-l2">
+				<h4 th:text="${titlePage}"></h4>
+			</div>
+		</div>
+	</main>
+
+	<footer th:replace="fragments/layouts :: footer"></footer>
 </body>
 </html>
