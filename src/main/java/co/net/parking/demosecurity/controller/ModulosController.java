@@ -1,18 +1,17 @@
 package co.net.parking.demosecurity.controller;
 
-import java.util.List;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.net.parking.demosecurity.model.ModuloModel;
 import co.net.parking.demosecurity.service.ModuloService;
+import co.net.parking.demosecurity.service.PaginaModuloService;
 import co.net.parking.demosecurity.utils.ConstantsUtil;
 
 @Controller
@@ -21,10 +20,12 @@ import co.net.parking.demosecurity.utils.ConstantsUtil;
 public class ModulosController {
 
 	private ModuloService service;
+	private PaginaModuloService paginaModuloService;
 
-	public ModulosController(ModuloService service) {
+	public ModulosController(ModuloService service, PaginaModuloService paginaModuloService) {
 		super();
 		this.service = service;
+		this.paginaModuloService = paginaModuloService;
 	}
 
 	@GetMapping
@@ -35,10 +36,11 @@ public class ModulosController {
 		return ConstantsUtil.MODULO_HOME;
 	}
 
-	@GetMapping("/list")
-	@PreAuthorize("hasAuthority('/modulos/list')")
-	public ResponseEntity<List<ModuloModel>> getModulos() {
-		return ResponseEntity.ok(this.service.getAll());
+	@GetMapping("/paginas/{idModulo}")
+	public String getPaginasModulo(Model model, @PathVariable Integer idModulo) {
+		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.MODULO_TIT_PAGINAS);
+		model.addAttribute(ConstantsUtil.PAGINA_OBJ_LISTAR, this.paginaModuloService.getByModulo(idModulo));
+		return ConstantsUtil.MODULO_PAGINAS;
 	}
 
 	@GetMapping("/crear")

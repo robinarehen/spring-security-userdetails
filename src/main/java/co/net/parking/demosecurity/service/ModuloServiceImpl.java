@@ -32,4 +32,10 @@ public class ModuloServiceImpl implements ModuloService {
 		return this.repository.findAll(pageable).getContent();
 	}
 
+	@Override
+	public ModuloModel getById(Integer idModulo) {
+		// TODO Auto-generated method stub
+		return this.repository.findById(idModulo).orElseThrow(() -> new IllegalArgumentException("Id does not exist"));
+	}
+
 }

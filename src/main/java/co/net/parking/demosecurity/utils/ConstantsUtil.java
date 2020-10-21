@@ -11,6 +11,8 @@ public class ConstantsUtil {
 	public static final String MODULO_OBJ_CREAR = "crearModulo";
 	public static final String MODULO_OBJ_LISTAR = "listaModulo";
 	public static final String MODULO_TIT_CREAR = "Crear Modulos";
+	public static final String MODULO_TIT_PAGINAS = "Paginas del Modulo";
+	public static final String MODULO_PAGINAS = "modulos/paginas-modulos";
 
 	public static final String ROL_NOMBRE = "Roles";
 	public static final String ROL_HOME = "roles/admin-roles";

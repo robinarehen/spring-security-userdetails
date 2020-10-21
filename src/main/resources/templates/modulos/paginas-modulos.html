@@ -18,24 +18,20 @@
 					<thead>
 						<tr>
 							<th>#</th>
-							<th>Nombre</th>
 							<th>Etiqueta</th>
+							<th>Url</th>
+							<th>Modulo</th>
 							<th>Icono</th>
-							<th>Paginas</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="modulo, iterador : ${listaModulo}">
+						<tr th:each="pagina, iterador : ${listaPaginas}">
 							<td th:text="${iterador.index + 1}"></td>
-							<td th:text="${modulo.nombre}"></td>
-							<td th:text="${modulo.label}"></td>
+							<td th:text="${pagina.label}"></td>
+							<td th:text="${pagina.url}"></td>
+							<td th:text="${pagina.moduloModel.label}"></td>
 							<td>
-								<i class="material-icons" th:text="${modulo.icono}"></i>
-							</td>
-							<td>
-								<a th:href="${'/modulos/paginas/' + modulo.idModulo}">
-									<i class="material-icons">remove_red_eye</i>
-								</a>
+								<i class="material-icons" th:text="${pagina.icono}"></i>
 							</td>
 						</tr>
 					</tbody>

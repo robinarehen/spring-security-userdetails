@@ -9,4 +9,6 @@ public interface ModuloService {
 	public ModuloModel create(ModuloModel modulo);
 	
 	public List<ModuloModel> getAll();
+	
+	public ModuloModel getById(Integer idModulo);
 }

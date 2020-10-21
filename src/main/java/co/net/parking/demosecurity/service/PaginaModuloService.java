@@ -9,4 +9,6 @@ public interface PaginaModuloService {
 	public PaginaModuloModel create(PaginaModuloModel paginaModulo);
 	
 	public List<PaginaModuloModel> getAll();
+	
+	public List<PaginaModuloModel> getByModulo(Integer idModulo);
 }
