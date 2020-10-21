@@ -18,4 +18,12 @@ public class ConstantsUtil {
 	public static final String ROL_OBJ_CREAR = "crearRol";
 	public static final String ROL_OBJ_LISTAR = "listaRol";
 	public static final String ROL_TIT_CREAR = "Crear Roles";
+
+	public static final String PAGINA_NOMBRE = "Paginas";
+	public static final String PAGINA_HOME = "paginas/admin-paginas";
+	public static final String PAGINA_CREAR = "paginas/crear-paginas";
+	public static final String PAGINA_OBJ_CREAR = "crearPagina";
+	public static final String PAGINA_OBJ_LISTAR = "listaPaginas";
+	public static final String PAGINA_TIT_CREAR = "Crear Paginas";
+
 }

@@ -17,7 +17,7 @@
 					</div>
 					<div class="card-content">
 						<div th:with="httpStatus=${T(org.springframework.http.HttpStatus).valueOf(#response.status)}">
-							<h5 th:if="${httpStatus.reasonPhrase} == 'Not Found'">The page does not exist</h5>
+							<h5 th:if="${status == 404}">The page does not exist</h5>
 							<h5 th:text="${errorMessage}"></h5>
 						</div>
 					</div>
