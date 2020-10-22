@@ -13,6 +13,44 @@
 			<div class="col s12 m12 offset-l2">
 				<h4 th:text="${titlePage}"></h4>
 			</div>
+			<div class="col s12 m12 offset-l2">
+				<div class="row">
+					<form class="col s12" th:action="@{/modulos/crear}" method="post" th:object="${crearModulo}">
+						<input type="hidden" id="inputRespuesta" th:value="${respuesta}">
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="nombre" type="text" class="validate" autocomplete="off"
+									th:field="*{nombre}">
+								<label for="nombre">Nombre</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="etiqueta" type="text" class="validate" autocomplete="off"
+									th:field="*{label}">
+								<label for="etiqueta">Etiqueta</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="icono" type="text" class="validate" autocomplete="off"
+									th:field="*{icono}">
+								<label for="icono">Icono</label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="descripcion" type="text" class="validate" autocomplete="off"
+									th:field="*{descripcion}">
+								<label for="descripcion">Descripción</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 text-right">
+								<button type="submit" class="waves-effect blue btn">
+									<i class="material-icons left">save</i> Crear
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
 	</main>
 

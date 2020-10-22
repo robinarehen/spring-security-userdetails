@@ -3,6 +3,7 @@ package co.net.parking.demosecurity.model;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,7 +20,9 @@ public class ModuloModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idModulo;
 
+	@Column(nullable = false, unique = true)
 	private String nombre;
+	@Column(nullable = false, unique = true)
 	private String label;
 	private String icono;
 	private String descripcion;

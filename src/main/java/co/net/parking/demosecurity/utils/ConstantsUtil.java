@@ -4,6 +4,7 @@ public class ConstantsUtil {
 
 	public static final String TITLE_PAGE = "titlePage";
 	public static final String ACTIVE_MODULE = "activeModule";
+	public static final String RESPUESTA_CREAR = "respuesta";
 
 	public static final String MODULO_NOMBRE = "Modulos";
 	public static final String MODULO_HOME = "modulos/admin-modulos";
@@ -28,4 +29,6 @@ public class ConstantsUtil {
 	public static final String PAGINA_OBJ_LISTAR = "listaPaginas";
 	public static final String PAGINA_TIT_CREAR = "Crear Paginas";
 
+	public static final String ERROR_ID = "Identificador no existe";
+	public static final String ERROR_DUPLICADO = "Se ha intentado insertar un valor que ya existe.";
 }

@@ -58,9 +58,11 @@ public class ModulosController {
 	public String postCrearModulo(Model model,
 			@ModelAttribute(ConstantsUtil.MODULO_OBJ_CREAR) ModuloModel moduloModel) {
 
-		ModuloModel moduloCreado = this.service.create(moduloModel);
+		this.service.create(moduloModel);
 
-		model.addAttribute(ConstantsUtil.MODULO_OBJ_CREAR, moduloCreado);
+		model.addAttribute(ConstantsUtil.RESPUESTA_CREAR, "201");
+		model.addAttribute(ConstantsUtil.MODULO_OBJ_CREAR, new ModuloModel());
+		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.MODULO_TIT_CREAR);
 
 		return ConstantsUtil.MODULO_CREAR;
 	}
