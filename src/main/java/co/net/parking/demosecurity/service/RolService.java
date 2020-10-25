@@ -7,6 +7,8 @@ import co.net.parking.demosecurity.model.RolModel;
 public interface RolService {
 
 	public RolModel create(RolModel rolModel);
-	
+
 	public List<RolModel> getAll();
+
+	public RolModel getById(Integer idRol);
 }

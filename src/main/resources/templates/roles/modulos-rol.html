@@ -12,6 +12,9 @@
 		<div class="row">
 			<div class="col s12 m12 offset-l2">
 				<h4 th:text="${titlePage}"></h4>
+				<a href="/roles" class="btn-back">
+					<i class="material-icons">close</i>
+				</a>
 			</div>
 			<div class="col s12 m12 offset-l2">
 				<table>
@@ -19,21 +22,12 @@
 						<tr>
 							<th>#</th>
 							<th>Nombre</th>
-							<th>Descripción</th>
-							<th>Modulos</th>
+							<th>Etiqueta</th>
+							<th>Icono</th>
+							<th>Rol</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="rol, iterador : ${listaRol}">
-							<td th:text="${iterador.index + 1}"></td>
-							<td th:text="${rol.nombre}"></td>
-							<td th:text="${rol.descripcion}"></td>
-							<td>
-								<a th:href="${'/roles/modulos/' + rol.idRol}">
-									<i class="material-icons">remove_red_eye</i>
-								</a>
-							</td>
-						</tr>
 					</tbody>
 				</table>
 			</div>

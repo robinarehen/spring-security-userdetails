@@ -13,7 +13,7 @@ public class ConstantsUtil {
 	public static final String MODULO_OBJ_LISTAR = "listaModulo";
 	public static final String MODULO_TIT_CREAR = "Crear Modulos";
 	public static final String MODULO_TIT_PAGINAS = "Paginas del Modulo";
-	public static final String MODULO_PAGINAS = "modulos/paginas-modulos";
+	public static final String MODULO_PAGINAS = "modulos/paginas-modulo";
 
 	public static final String ROL_NOMBRE = "Roles";
 	public static final String ROL_HOME = "roles/admin-roles";
@@ -21,6 +21,8 @@ public class ConstantsUtil {
 	public static final String ROL_OBJ_CREAR = "crearRol";
 	public static final String ROL_OBJ_LISTAR = "listaRol";
 	public static final String ROL_TIT_CREAR = "Crear Roles";
+	public static final String ROL_MODULOS = "roles/modulos-rol";
+	public static final String ROL_TIT_MODULOS = "Modulos del Rol";
 
 	public static final String PAGINA_NOMBRE = "Paginas";
 	public static final String PAGINA_HOME = "paginas/admin-paginas";
@@ -30,5 +32,5 @@ public class ConstantsUtil {
 	public static final String PAGINA_TIT_CREAR = "Crear Paginas";
 
 	public static final String ERROR_ID = "Identificador no existe";
-	public static final String ERROR_DUPLICADO = "Se ha intentado insertar un valor que ya existe.";
+	public static final String ERROR_DUPLICADO = "Se ha intentado insertar un valor que ya existe, validar la lista de ";
 }

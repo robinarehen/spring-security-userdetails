@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.net.parking.demosecurity.service.RolService;
@@ -28,6 +29,12 @@ public class RolesController {
 		model.addAttribute(ConstantsUtil.ROL_OBJ_LISTAR, this.service.getAll());
 
 		return ConstantsUtil.ROL_HOME;
+	}
+
+	@GetMapping("/modulos/{idRol}")
+	private String getModulosRol(Model model, @PathVariable Integer idRol) {
+		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.ROL_TIT_MODULOS);
+		return ConstantsUtil.ROL_MODULOS;
 	}
 
 	@GetMapping("/crear")

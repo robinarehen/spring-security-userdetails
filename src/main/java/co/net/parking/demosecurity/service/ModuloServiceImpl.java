@@ -3,7 +3,6 @@ package co.net.parking.demosecurity.service;
 import java.util.List;
 import java.util.function.Predicate;
 
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -37,7 +36,8 @@ public class ModuloServiceImpl implements ModuloService {
 			return validate;
 		};
 		this.getAll().stream().filter(predicate).findFirst().ifPresent( value -> {
-			throw new DataIntegrityViolationException(ConstantsUtil.ERROR_DUPLICADO);
+			String mensaje = String.format("%s %s", ConstantsUtil.ERROR_DUPLICADO, ConstantsUtil.MODULO_NOMBRE);
+			throw new IllegalArgumentException(mensaje);
 		});
 	}
 
