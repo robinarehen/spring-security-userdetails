@@ -38,6 +38,12 @@ public class ConstantsUtil {
 	public static final String PAGINA_OBJ_CREAR = "crearPagina";
 	public static final String PAGINA_OBJ_LISTAR = "listaPaginas";
 	public static final String PAGINA_TIT_CREAR = "Crear Paginas";
+	
+	public static final String USUARIO_NOMBRE = "Usuarios";
+	public static final String USUARIO_HOME = "usuarios/admin-usuarios";
+	public static final String USUARIO_CREAR = "usuarios/crear-usuarios";
+	public static final String USUARIO_OBJ_LISTAR = "listaUsuarios";
+	public static final String USUARIO_OBJ_CREAR = "crearUsuario";
 
 	public static final String ERROR_ID = "Identificador no existe";
 	public static final String ERROR_DUPLICADO = "Se ha intentado insertar un valor que ya existe, validar la lista de ";

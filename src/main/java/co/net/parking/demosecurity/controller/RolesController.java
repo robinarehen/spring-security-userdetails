@@ -44,7 +44,7 @@ public class RolesController {
 
 	@GetMapping("/crear")
 	@PreAuthorize("hasAuthority('/roles/crear')")
-	public String getCrearRoles(Model model) {
+	public String getCrearRol(Model model) {
 		model.addAttribute(ConstantsUtil.ROL_OBJ_CREAR, this.rolModel);
 		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.ROL_TIT_CREAR);
 		return ConstantsUtil.ROL_CREAR;
@@ -52,7 +52,7 @@ public class RolesController {
 
 	@PostMapping("/crear")
 	@PreAuthorize("hasAuthority('/roles/crear')")
-	public String postCrearRoles(Model model, @ModelAttribute(ConstantsUtil.ROL_OBJ_CREAR) RolModel rolModel) {
+	public String postCrearRol(Model model, @ModelAttribute(ConstantsUtil.ROL_OBJ_CREAR) RolModel rolModel) {
 
 		this.service.create(rolModel);
 

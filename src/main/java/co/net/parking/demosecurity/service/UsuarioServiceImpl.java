@@ -7,15 +7,15 @@ import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import co.net.parking.demosecurity.model.PaginaModuloModel;
 import co.net.parking.demosecurity.model.UsuarioModel;
 import co.net.parking.demosecurity.repository.UsuarioRepository;
 
 @Service
-@Transactional(readOnly = true)
 public class UsuarioServiceImpl implements UsuarioService {
 
 	private UsuarioRepository repository;
@@ -55,5 +55,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 		});
 
 		return menuPaginas;
+	}
+
+	@Override
+	public List<UsuarioModel> getAll() {
+		// TODO Auto-generated method stub
+		Pageable pageable = PageRequest.of(0, 10);
+		return this.repository.findAll(pageable).getContent();
 	}
 }

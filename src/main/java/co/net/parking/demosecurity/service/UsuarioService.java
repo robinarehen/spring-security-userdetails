@@ -11,4 +11,6 @@ public interface UsuarioService {
 	public UsuarioModel getByUserName(String userName);
 
 	public Map<String, List<PaginaModuloModel>> listMenu(String userName);
+	
+	public List<UsuarioModel> getAll();
 }
