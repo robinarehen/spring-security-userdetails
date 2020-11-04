@@ -22,7 +22,7 @@ insert into paginas_modulo (id_modulo, label, url, icono) values (2, 'Crear Role
 insert into paginas_modulo (id_modulo, label, url, icono) values (3, 'Listar Usuarios', '/usuarios', 'list');
 insert into paginas_modulo (id_modulo, label, url, icono) values (3, 'Crear Usuarios', '/usuarios/crear', 'save');
 insert into paginas_modulo (id_modulo, label, url, icono) values (4, 'Listar Paginas', '/paginas', 'list');
-insert into paginas_modulo (id_modulo, label, url, icono) values (4, 'Crear Paginas', '/paginas/crear', 'save');
+/*insert into paginas_modulo (id_modulo, label, url, icono) values (4, 'Crear Paginas', '/paginas/crear', 'save');*/
 
 /*Rol Admin*/
 insert into paginas_rol (id_pagina_modulo, id_rol) values (1, 1);
@@ -32,7 +32,6 @@ insert into paginas_rol (id_pagina_modulo, id_rol) values (4, 1);
 insert into paginas_rol (id_pagina_modulo, id_rol) values (5, 1);
 insert into paginas_rol (id_pagina_modulo, id_rol) values (6, 1);
 insert into paginas_rol (id_pagina_modulo, id_rol) values (7, 1);
-insert into paginas_rol (id_pagina_modulo, id_rol) values (8, 1);
 
 /*Rol Dev*/
 insert into paginas_rol (id_pagina_modulo, id_rol) values (1, 2);

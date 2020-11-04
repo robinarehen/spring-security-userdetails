@@ -17,4 +17,5 @@ mensajeCrear(message)
 ```
 
 # Deuda Técnica
-- [ ] Validar Campos obligatorios en el backend.
+1. Validar Campos obligatorios en el backend.
+2. Mostrar un mensaje de error cuando el parametro `${errorMessage}` de la paginas `error.html` llega sin información.

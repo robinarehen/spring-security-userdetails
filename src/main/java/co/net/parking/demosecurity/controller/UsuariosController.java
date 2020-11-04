@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.net.parking.demosecurity.model.UsuarioModel;
@@ -35,6 +36,13 @@ public class UsuariosController {
 	@PreAuthorize("hasAuthority('/usuarios/crear')")
 	public String getCrearUsuario(Model model) {
 		model.addAttribute(ConstantsUtil.USUARIO_OBJ_CREAR, this.usuarioModel);
+		return ConstantsUtil.USUARIO_CREAR;
+	}
+
+	@PostMapping("/crear")
+	@PreAuthorize("hasAuthority('/usuarios/crear')")
+	public String postCrearUsuario(Model model, @ModelAttribute(ConstantsUtil.USUARIO_OBJ_CREAR) UsuarioModel usuarioModel) {
+		model.addAttribute(ConstantsUtil.USUARIO_OBJ_CREAR, usuarioModel);
 		return ConstantsUtil.USUARIO_CREAR;
 	}
 
