@@ -1,11 +1,11 @@
-insert into USUARIOS (id_usuario, usuario, contrasenia, enabled) values (1, 'rarellano', '$2a$10$iPwRfYkeETRb8vYqtZd/1uxndPdoFlrvVjicZe3sFXlr7e4FBB5vC', true);
-insert into USUARIOS (id_usuario, usuario, contrasenia, enabled) values (2, 'rhenriquez', '$2a$10$iPwRfYkeETRb8vYqtZd/1uxndPdoFlrvVjicZe3sFXlr7e4FBB5vC', true);
+insert into usuarios (id_usuario, usuario, contrasenia, enabled) values (1, 'rarellano', '$2a$10$iPwRfYkeETRb8vYqtZd/1uxndPdoFlrvVjicZe3sFXlr7e4FBB5vC', true);
+insert into usuarios (id_usuario, usuario, contrasenia, enabled) values (2, 'rhenriquez', '$2a$10$iPwRfYkeETRb8vYqtZd/1uxndPdoFlrvVjicZe3sFXlr7e4FBB5vC', true);
 
-insert into ROLES (id_rol, nombre, descripcion) values (1, 'Admin', 'Administrador');
-insert into ROLES (id_rol, nombre, descripcion) values (2, 'Dev', 'Desarrollador');
+insert into roles (id_rol, nombre, descripcion) values (1, 'Admin', 'Administrador');
+insert into roles (id_rol, nombre, descripcion) values (2, 'Dev', 'Desarrollador');
 
-insert into ROLES_USUARIOS (id_rol_usuario, id_usuario, id_rol, descripcion) values (1, 1, 1, 'user: rarellano - rol: Admin');
-insert into ROLES_USUARIOS (id_rol_usuario, id_usuario, id_rol, descripcion) values (2, 2, 2, 'user: rhenriquez - rol: dev');
+insert into roles_usuarios (id_rol_usuario, id_usuario, id_rol, descripcion) values (1, 1, 1, 'user: rarellano - rol: Admin');
+insert into roles_usuarios (id_rol_usuario, id_usuario, id_rol, descripcion) values (2, 2, 2, 'user: rhenriquez - rol: dev');
 
 insert into modulos (id_modulo, nombre, label, icono) values (1, 'Servicio Modulos', 'Modulos', 'folder');
 insert into modulos (id_modulo, nombre, label, icono) values (2, 'Servicio Roles', 'Roles', 'folder');

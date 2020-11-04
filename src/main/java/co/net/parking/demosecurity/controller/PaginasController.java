@@ -24,9 +24,7 @@ public class PaginasController {
 
 	@GetMapping
 	public String getPaginas(Model model) {
-
 		model.addAttribute(ConstantsUtil.PAGINA_OBJ_LISTAR, this.service.getAll());
-
 		return ConstantsUtil.PAGINA_HOME;
 	}
 

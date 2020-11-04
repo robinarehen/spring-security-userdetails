@@ -2,10 +2,8 @@ package co.net.parking.demosecurity.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +25,7 @@ public class ModuloModel {
 	private String icono;
 	private String descripcion;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "moduloModel")
 	private List<PaginaModuloModel> paginaModuloModels;
 
 	public ModuloModel() {

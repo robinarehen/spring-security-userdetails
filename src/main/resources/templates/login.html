@@ -15,15 +15,18 @@
 				</div>
 				<div class="card-content">
 					<div class="row">
-						<form class="col s12 offset-m2" th:action="@{/login}" method="post">
+						<form id="form-login" class="col s12 offset-m2" th:action="@{/login}" 
+							method="post" onsubmit="return validarForm('form-login');">
 							<div class="row">
 								<div class="input-field col s12 m9">
-									<input type="text" id="username" name="username" value="">
-									<label for="username">User Name o Email</label>
+									<input type="text" id="username" name="username" value="" class="validate">
+									<label for="username">Usuario o Email</label>
+									<span class="helper-text" data-error="Campo Obligatorio">Campo Obligatorio</span>
 								</div>
 								<div class="input-field col s12 m9">
-									<input type="password" id="password" name="password" value=""><br>
-									<label for="password">Password</label>
+									<input type="password" id="password" name="password" value="" class="validate">
+									<label for="password">Contraseña</label>
+									<span class="helper-text" data-error="Campo Obligatorio">Campo Obligatorio</span>
 								</div>
 								<div class="input-field col s12 m9">
 									<button type="submit" class="btn blue darken-2">
@@ -38,6 +41,6 @@
 		</div>
 	</main>
 
-	<footer th:replace="fragments/layouts :: footer"></footer>
+	<footer th:replace="fragments/layouts :: footer(paramerJs='/js/login.js')"></footer>
 </body>
 </html>

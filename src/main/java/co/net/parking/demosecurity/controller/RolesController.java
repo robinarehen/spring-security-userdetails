@@ -1,13 +1,16 @@
 package co.net.parking.demosecurity.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.net.parking.demosecurity.model.RolModel;
 import co.net.parking.demosecurity.service.RolService;
 import co.net.parking.demosecurity.utils.ConstantsUtil;
 
@@ -17,10 +20,12 @@ import co.net.parking.demosecurity.utils.ConstantsUtil;
 public class RolesController {
 
 	private RolService service;
+	private final RolModel rolModel;
 
 	public RolesController(RolService service) {
 		super();
 		this.service = service;
+		this.rolModel = new RolModel();
 	}
 
 	@GetMapping
@@ -31,7 +36,7 @@ public class RolesController {
 
 	@GetMapping("/modulos/{idRol}")
 	public String getModulosRol(Model model, @PathVariable Integer idRol) {
-		model.addAttribute(ConstantsUtil.ROL_OBJ_NOMBRE, this.service.getById(idRol).getDescripcion());
+		model.addAttribute(ConstantsUtil.ROL_OBJ_NOMBRE, this.service.getById(idRol).getNombre());
 		model.addAttribute(ConstantsUtil.ROL_OBJ_MODULOS, this.service.getModulosByRol(idRol));
 		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.ROL_TIT_MODULOS);
 		return ConstantsUtil.ROL_MODULOS;
@@ -40,6 +45,19 @@ public class RolesController {
 	@GetMapping("/crear")
 	@PreAuthorize("hasAuthority('/roles/crear')")
 	public String getCrearRoles(Model model) {
+		model.addAttribute(ConstantsUtil.ROL_OBJ_CREAR, this.rolModel);
+		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.ROL_TIT_CREAR);
+		return ConstantsUtil.ROL_CREAR;
+	}
+
+	@PostMapping("/crear")
+	@PreAuthorize("hasAuthority('/roles/crear')")
+	public String postCrearRoles(Model model, @ModelAttribute(ConstantsUtil.ROL_OBJ_CREAR) RolModel rolModel) {
+
+		this.service.create(rolModel);
+
+		model.addAttribute(ConstantsUtil.RESPUESTA_CREAR, HttpStatus.CREATED.value());
+		model.addAttribute(ConstantsUtil.ROL_OBJ_CREAR, this.rolModel);
 		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.ROL_TIT_CREAR);
 		return ConstantsUtil.ROL_CREAR;
 	}

@@ -1,6 +1,9 @@
 window.onload = function() {
-
 	initMaterialize();
+	crearRol()
+}
 
-	console.log('roles js');
+function crearRol() {
+	var message = 'Se ha Crea el Rol correctamente!';
+	mensajeCrear(message);
 }
