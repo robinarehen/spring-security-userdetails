@@ -20,14 +20,32 @@
 				<table>
 					<thead>
 						<tr>
+							<th colspan="5">
+								<h5><strong th:text="${nombreRol}"></strong></h5>
+							</th>
+						</tr>
+						<tr>
 							<th>#</th>
 							<th>Nombre</th>
 							<th>Etiqueta</th>
 							<th>Icono</th>
-							<th>Rol</th>
+							<th>Paginas</th> 
 						</tr>
 					</thead>
 					<tbody>
+						<tr th:each="modulo, iterador : ${listaModulosRol.entrySet()}">
+							<td th:text="${iterador.index + 1}"></td>
+							<td th:text="${modulo.getValue().nombre}"></td>
+							<td th:text="${modulo.getValue().label}"></td>
+							<td>
+								<i class="material-icons" th:text="${modulo.getValue().icono}"></i>
+							</td>
+							<td>
+								<a th:href="${'/modulos/paginas/' + modulo.getValue().idModulo}">
+									<i class="material-icons">remove_red_eye</i>
+								</a>
+							</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>

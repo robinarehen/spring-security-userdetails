@@ -14,18 +14,18 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import co.net.parking.demosecurity.model.UsuarioModel;
-import co.net.parking.demosecurity.repository.UsuarioModelRepository;
+import co.net.parking.demosecurity.repository.UsuarioRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Autowired
-	private UsuarioModelRepository usuarioModelRepository;
+	private UsuarioRepository usuarioRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
-		UsuarioModel usuarioModel = this.usuarioModelRepository.findByUsuario(username);
+		UsuarioModel usuarioModel = this.usuarioRepository.findByUsuario(username);
 		
 		Optional.ofNullable(usuarioModel).orElseThrow(() -> new UsernameNotFoundException("User does not exist"));
 

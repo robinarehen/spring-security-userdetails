@@ -6,6 +6,12 @@ public class ConstantsUtil {
 	public static final String ACTIVE_MODULE = "activeModule";
 	public static final String RESPUESTA_CREAR = "respuesta";
 
+	public static final String HOME_NOMBRE = "Dashboard";
+	public static final String HOME_LOGIN = "login";
+	public static final String HOME_LOGOUT = "redirect:/login";
+	public static final String HOME_PAGE = "dashboard";
+	public static final String HOME_MENU = "menuPaginas";
+
 	public static final String MODULO_NOMBRE = "Modulos";
 	public static final String MODULO_HOME = "modulos/admin-modulos";
 	public static final String MODULO_CREAR = "modulos/crear-modulos";
@@ -23,6 +29,8 @@ public class ConstantsUtil {
 	public static final String ROL_TIT_CREAR = "Crear Roles";
 	public static final String ROL_MODULOS = "roles/modulos-rol";
 	public static final String ROL_TIT_MODULOS = "Modulos del Rol";
+	public static final String ROL_OBJ_MODULOS = "listaModulosRol";
+	public static final String ROL_OBJ_NOMBRE = "nombreRol";
 
 	public static final String PAGINA_NOMBRE = "Paginas";
 	public static final String PAGINA_HOME = "paginas/admin-paginas";

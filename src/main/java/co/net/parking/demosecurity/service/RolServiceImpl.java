@@ -1,12 +1,15 @@
 package co.net.parking.demosecurity.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Predicate;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import co.net.parking.demosecurity.model.ModuloModel;
 import co.net.parking.demosecurity.model.RolModel;
 import co.net.parking.demosecurity.repository.RolRepository;
 import co.net.parking.demosecurity.utils.ConstantsUtil;
@@ -34,7 +37,7 @@ public class RolServiceImpl implements RolService {
 			String nuevoRol = rolModel.getNombre().toLowerCase();
 			return rol.getNombre().toLowerCase().equals(nuevoRol);
 		};
-		this.getAll().stream().filter(predicate).findFirst().ifPresent( value -> {
+		this.getAll().stream().filter(predicate).findFirst().ifPresent(value -> {
 			String mensaje = String.format("%s %s", ConstantsUtil.ERROR_DUPLICADO, ConstantsUtil.ROL_NOMBRE);
 			throw new IllegalArgumentException(mensaje);
 		});
@@ -51,6 +54,21 @@ public class RolServiceImpl implements RolService {
 	public RolModel getById(Integer idRol) {
 		// TODO Auto-generated method stub
 		return this.repository.findById(idRol).orElseThrow(() -> new IllegalArgumentException(ConstantsUtil.ERROR_ID));
+	}
+
+	@Override
+	public Map<String, ModuloModel> getModulosByRol(Integer idRol) {
+		// TODO Auto-generated method stub
+		Map<String, ModuloModel> modulosRol = new HashMap<>();
+
+		this.getById(idRol).getPaginaRolModels().stream().forEach(paginas -> {
+			String key = paginas.getPaginaModuloModel().getModuloModel().getLabel();
+			if (!modulosRol.containsKey(key)) {
+				modulosRol.put(key, paginas.getPaginaModuloModel().getModuloModel());
+			}
+		});
+
+		return modulosRol;
 	}
 
 }

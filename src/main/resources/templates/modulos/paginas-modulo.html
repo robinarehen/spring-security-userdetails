@@ -12,18 +12,22 @@
 		<div class="row">
 			<div class="col s12 m12 offset-l2">
 				<h4 th:text="${titlePage}"></h4>
-				<a href="/modulos" class="btn-back">
+				<a href="javascript:history.back()" class="btn-back">
 					<i class="material-icons">close</i>
 				</a>
 			</div>
 			<div class="col s12 m12 offset-l2">
 				<table>
 					<thead>
+						<tr th:if="${listaPaginas != null && listaPaginas.size() > 0}">
+							<th colspan="4">
+								<h5><strong th:text="${listaPaginas.get(0).moduloModel.label}"></strong></h5>
+							</th>
+						</tr>
 						<tr>
 							<th>#</th>
 							<th>Etiqueta</th>
 							<th>Url</th>
-							<th>Modulo</th>
 							<th>Icono</th>
 						</tr>
 					</thead>
@@ -32,7 +36,6 @@
 							<td th:text="${iterador.index + 1}"></td>
 							<td th:text="${pagina.label}"></td>
 							<td th:text="${pagina.url}"></td>
-							<td th:text="${pagina.moduloModel.label}"></td>
 							<td>
 								<i class="material-icons" th:text="${pagina.icono}"></i>
 							</td>

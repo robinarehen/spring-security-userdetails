@@ -1,12 +1,6 @@
 package co.net.parking.demosecurity.controller;
 
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,24 +11,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import co.net.parking.demosecurity.model.PaginaModuloModel;
-import co.net.parking.demosecurity.model.UsuarioModel;
-import co.net.parking.demosecurity.service.UsuarioModelService;
+import co.net.parking.demosecurity.service.UsuarioService;
+import co.net.parking.demosecurity.service.UsuarioServiceImpl;
+import co.net.parking.demosecurity.utils.ConstantsUtil;
 
 @Controller
 public class HomeController {
 
-	private UsuarioModelService modelService;
+	private UsuarioService usuarioService;
 
-	public HomeController(UsuarioModelService modelService) {
+	public HomeController(UsuarioServiceImpl usuarioService) {
 		super();
-		this.modelService = modelService;
+		this.usuarioService = usuarioService;
 	}
 
 	@RequestMapping({ "/", "/index", "/login" })
 	public String login(Model model) {
-
-		return "login";
+		return ConstantsUtil.HOME_LOGIN;
 	}
 
 	@RequestMapping("/logout")
@@ -44,45 +37,24 @@ public class HomeController {
 
 		logoutHandler.logout(request, null, null);
 
-		return "redirect:/login";
+		return ConstantsUtil.HOME_LOGOUT;
 	}
 
 	@RequestMapping("/dashboard")
 	public String dashboard(Principal principal, Model model, HttpSession session) {
 
-		if (session != null && session.getAttribute("menuPaginas") != null) {
-			return "dashboard";
+		if (session != null && session.getAttribute(ConstantsUtil.HOME_MENU) != null) {
+			return ConstantsUtil.HOME_PAGE;
 		}
 
-		UsuarioModel usuarioModel = this.modelService.getFindByUserName(principal.getName());
+		session.setAttribute(ConstantsUtil.HOME_MENU, this.usuarioService.listMenu(principal.getName()));
 
-		List<PaginaModuloModel> paginasModulo = new ArrayList<>();
-
-		Map<String, List<PaginaModuloModel>> menuPaginas = new HashMap<>();
-
-		usuarioModel.getRolUsuarioModels().forEach(rol -> {
-			rol.getRolModel().getPaginaRolModels().forEach(paginas -> {
-				String key = paginas.getPaginaModuloModel().getModuloModel().getLabel();
-				menuPaginas.put(key, null);
-				paginasModulo.add(paginas.getPaginaModuloModel());
-			});
-		});
-
-		menuPaginas.entrySet().forEach(data -> {
-			Predicate<PaginaModuloModel> predicate = (pagina) -> {
-				return pagina.getModuloModel().getLabel().equals(data.getKey());
-			};
-			data.setValue(paginasModulo.stream().filter(predicate).collect(Collectors.toList()));
-		});
-
-		session.setAttribute("menuPaginas", menuPaginas);
-
-		return "dashboard";
+		return ConstantsUtil.HOME_PAGE;
 	}
 
 	@ModelAttribute
 	public Model setAttribute(Model model) {
-		model.addAttribute("titlePage", "Dashboard");
+		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.HOME_NOMBRE);
 		return model;
 	}
 }
