@@ -12,6 +12,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import lombok.Data;
 
 @Data
@@ -29,8 +32,9 @@ public class UsuarioModel {
 	private boolean enabled;
 
 	@OneToMany(mappedBy = "usuarioModel", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)//solution to MultipleBagFetchException in H2
 	private List<RolUsuarioModel> rolUsuarioModels;
-	
+
 	@OneToOne(mappedBy = "usuarioModel")
 	private PersonaModel personaModel;
 

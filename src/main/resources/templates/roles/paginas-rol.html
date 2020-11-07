@@ -6,23 +6,26 @@
 </head>
 <body>
 
-	<header th:replace="fragments/layouts :: header-users(activeLink='Listar Modulos')"></header>
+	<header th:replace="fragments/layouts :: header-users(activeLink='Listar Roles')"></header>
 
 	<main class="container">
 		<div class="row">
 			<div class="col s12 m12 offset-l2">
 				<h4 th:text="${titlePage}"></h4>
-				<a href="/modulos" class="btn-back">
+				<a href="javascript:history.back()" class="btn-back">
 					<i class="material-icons">close</i>
 				</a>
 			</div>
 			<div class="col s12 m12 offset-l2">
 				<table>
 					<thead>
-						<tr th:if="${listaPaginas != null && listaPaginas.size() > 0}">
+						<tr>
 							<th colspan="4">
 								<h5>
-									Modulo: <strong th:text="${listaPaginas.get(0).moduloModel.nombre}"></strong>
+									Rol: <strong th:text="${dataRol.nombre}"></strong> 
+									<span th:if="${listaPaginas != null && listaPaginas.size() > 0}">
+										- Modulo: <strong th:text="${listaPaginas.get(0).moduloModel.nombre}"></strong>
+									</span>
 								</h5>
 							</th>
 						</tr>

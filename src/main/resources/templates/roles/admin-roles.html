@@ -21,6 +21,7 @@
 							<th>Nombre</th>
 							<th>Descripción</th>
 							<th>Modulos</th>
+							<th>Usuarios</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -30,6 +31,11 @@
 							<td th:text="${rol.descripcion}"></td>
 							<td>
 								<a th:href="${'/roles/modulos/' + rol.idRol}">
+									<i class="material-icons">remove_red_eye</i>
+								</a>
+							</td>
+							<td>
+								<a href="#">
 									<i class="material-icons">remove_red_eye</i>
 								</a>
 							</td>

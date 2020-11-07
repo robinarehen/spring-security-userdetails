@@ -16,7 +16,7 @@
 				<div class="card-content">
 					<div class="row">
 						<form id="form-login" class="col s12 offset-m2" th:action="@{/login}" 
-							method="post" onsubmit="return validarForm('form-login');">
+							method="post" onsubmit="return iniciarLogin('form-login');">
 							<div class="row">
 								<div class="input-field col s12 m9">
 									<input type="text" id="username" name="username" value="" class="validate">
@@ -28,10 +28,27 @@
 									<label for="password">Contraseña</label>
 									<span class="helper-text" data-error="Campo Obligatorio">Campo Obligatorio</span>
 								</div>
-								<div class="input-field col s12 m9">
-									<button type="submit" class="btn blue darken-2">
+							</div>
+							<div class="row">
+								<div class="input-field col s6 m3">
+									<button id="btn-summit" type="submit" class="btn blue darken-2">
 										<i class="material-icons left">send</i> Login
 									</button>
+								</div>
+								<div id="loading-login" class="col s3 m3 padd-top-10 display-none">
+									<div class="preloader-wrapper small active">
+										<div class="spinner-layer spinner-green-only">
+											<div class="circle-clipper left">
+												<div class="circle"></div>
+											</div>
+											<div class="gap-patch">
+												<div class="circle"></div>
+											</div>
+											<div class="circle-clipper right">
+												<div class="circle"></div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</form>

@@ -4,12 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import co.net.parking.demosecurity.model.ModuloModel;
+import co.net.parking.demosecurity.model.PaginaModuloModel;
+import co.net.parking.demosecurity.model.PaginaRolModel;
 import co.net.parking.demosecurity.model.RolModel;
 import co.net.parking.demosecurity.repository.RolRepository;
 import co.net.parking.demosecurity.utils.ConstantsUtil;
@@ -69,6 +72,19 @@ public class RolServiceImpl implements RolService {
 		});
 
 		return modulosRol;
+	}
+
+	@Override
+	public List<PaginaModuloModel> getPaginasByRolAndModulo(Integer idRol, Integer idModulo) {
+		// TODO Auto-generated method stub
+		Predicate<PaginaRolModel> predicate = (paginas) -> {
+			return paginas.getPaginaModuloModel().getModuloModel().getIdModulo() == idModulo;
+		};
+
+		return this.getById(idRol).getPaginaRolModels().stream().filter(predicate).map(paginas -> {
+			return paginas.getPaginaModuloModel();
+		}).collect(Collectors.toList());
+
 	}
 
 }

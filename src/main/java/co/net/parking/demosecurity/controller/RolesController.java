@@ -36,10 +36,18 @@ public class RolesController {
 
 	@GetMapping("/modulos/{idRol}")
 	public String getModulosRol(Model model, @PathVariable Integer idRol) {
-		model.addAttribute(ConstantsUtil.ROL_OBJ_NOMBRE, this.service.getById(idRol).getNombre());
+		model.addAttribute(ConstantsUtil.ROL_OBJ_DATA, this.service.getById(idRol));
 		model.addAttribute(ConstantsUtil.ROL_OBJ_MODULOS, this.service.getModulosByRol(idRol));
 		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.ROL_TIT_MODULOS);
 		return ConstantsUtil.ROL_MODULOS;
+	}
+
+	@GetMapping("/paginas/{idRol}/{idModulo}")
+	public String getPaginasRol(Model model, @PathVariable Integer idRol, @PathVariable Integer idModulo) {
+		model.addAttribute(ConstantsUtil.ROL_OBJ_DATA, this.service.getById(idRol));
+		model.addAttribute(ConstantsUtil.PAGINA_OBJ_LISTAR, this.service.getPaginasByRolAndModulo(idRol, idModulo));
+		model.addAttribute(ConstantsUtil.TITLE_PAGE, ConstantsUtil.ROL_TIT_PAGINAS);
+		return ConstantsUtil.ROL_PAGINAS;
 	}
 
 	@GetMapping("/crear")

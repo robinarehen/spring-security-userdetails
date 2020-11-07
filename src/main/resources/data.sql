@@ -40,3 +40,14 @@ insert into paginas_rol (id_pagina_modulo, id_rol) values (2, 2);
 /*
 The passwords is: abc123abc
 */
+
+/* Eliminar tablas
+DROP TABLE roles_usuarios;
+DROP TABLE paginas_rol;
+DROP TABLE paginas_modulo;
+DROP TABLE modulos;
+DROP TABLE datos_personales;
+DROP TABLE roles;
+DROP TABLE usuarios;
+*/
+

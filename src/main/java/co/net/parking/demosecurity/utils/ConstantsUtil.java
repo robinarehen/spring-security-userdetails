@@ -29,8 +29,10 @@ public class ConstantsUtil {
 	public static final String ROL_TIT_CREAR = "Crear Roles";
 	public static final String ROL_MODULOS = "roles/modulos-rol";
 	public static final String ROL_TIT_MODULOS = "Modulos del Rol";
+	public static final String ROL_TIT_PAGINAS = "Paginas del Rol";
 	public static final String ROL_OBJ_MODULOS = "listaModulosRol";
-	public static final String ROL_OBJ_NOMBRE = "nombreRol";
+	public static final String ROL_OBJ_DATA = "dataRol";
+	public static final String ROL_PAGINAS = "roles/paginas-rol";
 
 	public static final String PAGINA_NOMBRE = "Paginas";
 	public static final String PAGINA_HOME = "paginas/admin-paginas";

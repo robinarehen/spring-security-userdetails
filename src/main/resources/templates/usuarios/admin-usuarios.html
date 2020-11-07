@@ -22,6 +22,7 @@
 							<th>Nombres</th>
 							<th>Apellidos</th>
 							<th>Estado</th>
+							<th>Roles</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -31,6 +32,11 @@
 							<td th:text="${usuario.personaModel.nombres}"></td>
 							<td th:text="${usuario.personaModel.apellidos}"></td>
 							<td th:text="${usuario.enabled ? 'Activo':'Inactivo'}"></td>
+							<td>
+								<a href="#">
+									<i class="material-icons">remove_red_eye</i>
+								</a>
+							</td>
 						</tr>
 					</tbody>
 				</table>
