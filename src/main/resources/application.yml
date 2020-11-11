@@ -1,5 +1,4 @@
 spring:
-  profiles: h2embedded
   jpa:
     show-sql: true
     hibernate:      ddl-auto: create-drop
