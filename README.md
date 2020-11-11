@@ -17,11 +17,14 @@ mensajeCrear(message)
 ```
 
 # Heroku
-Actualmente la app se puede ver en funcionamiente en la plataforma de [Heroku](https://rah-developers.herokuapp.com/) ingresando desde el link. <br>
+Actualmente la app se puede ver en funcionamiente en la plataforma de **Heroku** ingresando desde el siguiente link [rah-developers](https://rah-developers.herokuapp.com/). <br>
 Para desplegar la aplicación en **Heroku** se crea el archivo `Procfile` en la raíz del proyecto, con la configuración que actualmente contiene.<br>
 **Heroku** ofrece formas de desplegar en modo `CLI` o directamene desde **GitHub** que es la forma más facil.<br>
 En la pagina oficial [Heroku-Home](https://www.heroku.com/home) bajar hasta el apartado **Work with the language you already love**, 
 aqui podras ver en video las dos formas de desplejar.
+
+Los datos de acceso se encuentra en el archivo `~/src/main/resources/data.sql`
+
 
 # Deuda Técnica
 1. Validar Campos obligatorios en el backend.
